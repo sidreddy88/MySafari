@@ -21,7 +21,6 @@
 		C9D021A9187F323C002E5F7C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D0218B187F323C002E5F7C /* UIKit.framework */; };
 		C9D021B1187F323C002E5F7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9D021AF187F323C002E5F7C /* InfoPlist.strings */; };
 		C9D021B3187F323C002E5F7C /* MySafariTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D021B2187F323C002E5F7C /* MySafariTests.m */; };
-		C9D021BD187F4034002E5F7C /* CheckMate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D021BC187F4034002E5F7C /* CheckMate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		C9D021AE187F323C002E5F7C /* MySafariTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MySafariTests-Info.plist"; sourceTree = "<group>"; };
 		C9D021B0187F323C002E5F7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C9D021B2187F323C002E5F7C /* MySafariTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySafariTests.m; sourceTree = "<group>"; };
-		C9D021BC187F4034002E5F7C /* CheckMate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CheckMate.framework; path = ../CheckMate.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9D021BD187F4034002E5F7C /* CheckMate.framework in Frameworks */,
 				C9D0218A187F323C002E5F7C /* CoreGraphics.framework in Frameworks */,
 				C9D0218C187F323C002E5F7C /* UIKit.framework in Frameworks */,
 				C9D02188187F323C002E5F7C /* Foundation.framework in Frameworks */,
@@ -104,7 +101,6 @@
 		C9D02186187F323C002E5F7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C9D021BC187F4034002E5F7C /* CheckMate.framework */,
 				C9D02187187F323C002E5F7C /* Foundation.framework */,
 				C9D02189187F323C002E5F7C /* CoreGraphics.framework */,
 				C9D0218B187F323C002E5F7C /* UIKit.framework */,
@@ -385,6 +381,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Matt/Documents/MobileMakers,
+					/Users/Sidreddy/Desktop/Mobile_Makers,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MySafari/MySafari-Prefix.pch";
@@ -402,6 +399,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Matt/Documents/MobileMakers,
+					/Users/Sidreddy/Desktop/Mobile_Makers,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MySafari/MySafari-Prefix.pch";
@@ -472,6 +470,7 @@
 				C9D021B8187F323C002E5F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9D021B9187F323C002E5F7C /* Build configuration list for PBXNativeTarget "MySafariTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +479,7 @@
 				C9D021BB187F323C002E5F7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

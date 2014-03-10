@@ -13,7 +13,11 @@
     
     __weak IBOutlet UIWebView *myWebView;
     __weak IBOutlet UITextField *myURLTextField;
+    
+    __weak IBOutlet UIActivityIndicatorView *spinner;
 }
+
+@property (nonatomic) float lastContentOffset;
 
 @end
 
@@ -22,8 +26,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    myWebView.scrollView.delegate = self;
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+
 - (IBAction)onBackButtonPressed:(id)sender {
     [myWebView goBack];
 }
@@ -38,14 +46,57 @@
     [myWebView reload];
     
 }
+- (IBAction)onTeaserButtonPressed:(id)sender {
+    
+    UIAlertView *teaser = [[UIAlertView alloc] initWithTitle:@"Coming soon" message:nil delegate:nil cancelButtonTitle:@"That sucks" otherButtonTitles:@"Fine", nil];
+    [teaser show];
+    
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    NSLog(@"x =%f and y = %f", scrollView.contentOffset.x, scrollView.contentOffset.y);
+    
+    if (scrollView.contentOffset.y > self.lastContentOffset){
+        // move down
+        myURLTextField.alpha = 0;
+    } else {
+        // move up
+        myURLTextField.alpha = 1;
+    }
+    
+    
+    self.lastContentOffset = scrollView.contentOffset.y;
+    
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSURL *url = [myWebView.request URL];
+    myURLTextField.text =   [url absoluteString];
+    [spinner startAnimating];
+
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSString *theTitle=[webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.navigationItem.title = theTitle;
+    [spinner stopAnimating];
+}
+
+
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    textField.text = myURLTextField.text;
+    NSRange currentRange = [textField.text rangeOfString:@"http://" options:NSCaseInsensitiveSearch];
     
-    NSURLRequest *rq = [NSURLRequest requestWithURL:[NSURL URLWithString:textField.text]];
+    id url = currentRange.location == NSNotFound ? [@"http://" stringByAppendingString:textField.text]:textField.text;
+    
+   id rq = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     [myWebView loadRequest:rq];
+    [textField resignFirstResponder];
+    
     return YES;
+    
 }
 
 - (void)didReceiveMemoryWarning
